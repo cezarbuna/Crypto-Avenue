@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CryptoAvenue.Domain.Models
 {
-    internal interface IEntity
+    public interface IEntity
     {
+        public Guid Id { get; set; }
     }
 }
