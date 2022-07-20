@@ -12,7 +12,6 @@ namespace CryptoAvenue.Domain.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public int Age { get; set; }
-        public int MyProperty { get; set; }
         public string SecurityQuestion { get; set; }
         public string SecurityAnswer { get; set; }
         public bool PrivateProfile { get; set; } = false;

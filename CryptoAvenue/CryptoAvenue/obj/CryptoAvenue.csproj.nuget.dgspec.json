@@ -31,7 +31,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.Domain\\CryptoAvenue.Domain.csproj": {
+                "projectPath": "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.Domain\\CryptoAvenue.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -43,6 +47,16 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -262,6 +276,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[10.0.1, )"

@@ -1,4 +1,9 @@
+using CryptoAvenue.Application.Commands.UserCommands;
 using CryptoAvenue.Dal;
+using CryptoAvenue.Dal.Repositories;
+using CryptoAvenue.Domain.IRepositories;
+using CryptoAvenue.Services;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +15,20 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<CryptoAvenueDbContext>();
+
+builder.Services.AddScoped<IScopedService, ScopedService>();
+builder.Services.AddTransient<ITransientService, TransientService>();
+builder.Services.AddSingleton<ISingletonService, SingletonService>();
+
+builder.Services.AddScoped<ICoinRepository, CoinRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IWalletRepository, WalletRepository>();
+builder.Services.AddScoped<ITradeOfferRepository, TradeOfferRepository>();
+
+builder.Services.AddMediatR(typeof(Program));
+builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddMediatR(typeof(CreateUserCommand));
 
 var app = builder.Build();
 

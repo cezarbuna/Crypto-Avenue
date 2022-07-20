@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "o4W+6IdE2LNQ/YN++2kpjDm8GPzX6m2PO4kSvubpX48DkzYXcSHnbdr2MZoIAwm4gONWCeINDJfLrNcycA4TCg==",
+  "dgSpecHash": "4uKEf/x6b8nV4avpQJx3gXDe28iVJc0vmsRtC7+R7cgdiFBFakGxNJ161iwew1QcThn5LDPANMrAcaNyvkIOFQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.Application\\CryptoAvenue.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\win 10\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\win 10\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\win 10\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
+    "C:\\Users\\win 10\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
