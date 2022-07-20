@@ -57,5 +57,42 @@ namespace CryptoAvenue.Controllers
 
             return Ok(foundCoin);
         }
+
+        [HttpGet]
+        [Route("get-all-coins")]
+        public async Task<IActionResult> GetAllCoins()
+        {
+            var query = new GetAllCoinsQuery();
+
+            var coins = await _mediator.Send(query);
+
+            if (coins == null)
+                return NotFound();
+
+            var foundCoins = _mapper.Map<List<CoinGetDto>>(coins);
+
+            return Ok(coins);
+        }
+
+        [HttpPatch]
+        [Route("update-coin/{id}")]
+        public async Task<IActionResult> UpdateCoin(Guid id, [FromBody] CoinPutPostDto coin)
+        {
+            var command = new UpdateCoinCommand
+            {
+                CoinId = id,
+                Name = coin.Name,
+                Abbreviation = coin.Abbreviation,
+                ValueInEUR = coin.ValueInEUR,
+                ValueInUSD = coin.ValueInUSD
+            };
+
+            var result = await _mediator.Send(command);
+
+            if (result == null)
+                return NotFound();
+
+            return NoContent();
+        }
     }
 }
