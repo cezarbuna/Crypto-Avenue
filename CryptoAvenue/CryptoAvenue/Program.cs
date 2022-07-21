@@ -1,4 +1,6 @@
+using CryptoAvenue.Application.Commands.CoinCommands;
 using CryptoAvenue.Application.Commands.UserCommands;
+using CryptoAvenue.Application.Commands.WalletCommands;
 using CryptoAvenue.Dal;
 using CryptoAvenue.Dal.Repositories;
 using CryptoAvenue.Domain.IRepositories;
@@ -29,6 +31,8 @@ builder.Services.AddMediatR(typeof(Program));
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddMediatR(typeof(CreateUserCommand));
+builder.Services.AddMediatR(typeof(CreateCoinCommand));
+builder.Services.AddMediatR(typeof(CreateWalletCommand));
 
 var app = builder.Build();
 

@@ -12,6 +12,6 @@ namespace CryptoAvenue.Domain.IRepositories
     {
         Wallet GetWalletBy(Expression<Func<Wallet, bool>> predicate);
         Wallet GetWalletById(Guid id);
-        IEnumerable<Wallet> GetAllWalletsBy(Expression<Func<Wallet, bool>> predicate);
+        IEnumerable<Wallet> GetAllWalletsBy(Expression<Func<Wallet, bool>>? predicate = null);
     }
 }
