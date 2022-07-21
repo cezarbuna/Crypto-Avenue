@@ -96,7 +96,7 @@ namespace CryptoAvenue.Controllers
         [Route("get-wallet-by-id/{id}")]
         public async Task<IActionResult> GetWalletById(Guid id)
         {
-            var query = new GetWalletByIdQuery {  WalletId = id };
+            var query = new GetWalletByIdQuery { WalletId = id };
 
             var wallet = await _mediator.Send(query);
 
@@ -121,6 +121,21 @@ namespace CryptoAvenue.Controllers
 
             var foundWallets = _mapper.Map<List<WalletGetDto>>(wallets);
             return Ok(foundWallets);
+        }
+
+        [HttpGet]
+        [Route("get-total-user-portfolio-value/{userId}/{option}")]
+        public async Task<IActionResult> GetTotalPortfolioValue(Guid userId, int option)
+        {
+            var query = new GetTotalPortfolioValueQuery
+            {
+                UserId = userId,
+                Option = option
+            };
+
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
         }
     }
 }
