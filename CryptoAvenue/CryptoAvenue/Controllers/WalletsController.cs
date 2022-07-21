@@ -61,6 +61,22 @@ namespace CryptoAvenue.Controllers
             return Ok(wallet);
         }
 
+        [HttpPost]
+        [Route("withdraw-from-user-account/{userId}/{option}")]
+        public async Task<IActionResult> WithdrawFromUserAccount(Guid userId, int option, [FromBody] double withdrawnAmount)
+        {
+            var command = new WithdrawFromAccountCommand
+            {
+                UserId = userId,
+                Option = option,
+                WithdrawnAmount = withdrawnAmount
+            };
+
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
         [HttpGet]
         [Route("get-all-wallets")]
         public async Task<IActionResult> GetAllWallets()

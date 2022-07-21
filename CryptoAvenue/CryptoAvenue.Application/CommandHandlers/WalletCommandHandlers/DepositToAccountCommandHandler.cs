@@ -13,16 +13,13 @@ namespace CryptoAvenue.Application.CommandHandlers.WalletCommandHandlers
     public class DepositToAccountCommandHandler : IRequestHandler<DepositToAccountCommand, Wallet>
     {
         private readonly IWalletRepository walletRepository;
-        private readonly IUserRepository userRepository;
         private readonly ICoinRepository coinRepository;
 
         public DepositToAccountCommandHandler(
             IWalletRepository walletRepository,
-            IUserRepository userRepository,
             ICoinRepository coinRepository)
         {
             this.walletRepository = walletRepository;
-            this.userRepository = userRepository;
             this.coinRepository = coinRepository;
         }
 
