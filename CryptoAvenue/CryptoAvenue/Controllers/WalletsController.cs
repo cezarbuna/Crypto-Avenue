@@ -77,6 +77,23 @@ namespace CryptoAvenue.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("convert-coins-in-user-wallets/{userId}/{soldCoinId}/{boughtCoinId}")]
+        public async Task<IActionResult> ConvertCoinsInUserWallets(Guid userId, Guid soldCoinId, Guid boughtCoinId, [FromBody] double boughtAmount)
+        {
+            var command = new ConvertCoinsInUserWalletsCommand
+            {
+                UserId = userId,
+                SoldCoinId = soldCoinId,
+                BoughtCoinId = boughtCoinId,
+                BoughtAmount = boughtAmount
+            };
+
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
         [HttpGet]
         [Route("get-all-wallets")]
         public async Task<IActionResult> GetAllWallets()

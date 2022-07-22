@@ -162,5 +162,20 @@ namespace CryptoAvenue.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete]
+        [Route("delete-user/{id}")]
+        public async Task<IActionResult> DeleteUser(Guid id)
+        {
+            var command = new DeleteUserCommand { UserId = id };
+
+            var result = await _mediator.Send(command);
+
+            if (result == null)
+                return NotFound();
+
+            var deletedUser = _mapper.Map<UserGetDto>(result);
+            return Ok(deletedUser);
+        }
     }
 }
