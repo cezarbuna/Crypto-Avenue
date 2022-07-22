@@ -15,4 +15,9 @@
     <ProjectReference Include="..\CryptoAvenue.Domain\CryptoAvenue.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CommandHandlers\TradeOfferCommandHandlers\" />
+    <Folder Include="Commands\TradeOfferCommands\" />
+  </ItemGroup>
+
 </Project>
