@@ -73,5 +73,35 @@ namespace CryptoAvenue.Controllers
             var foundTradeOffer = _mapper.Map<TradeOfferGetDto>(result);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("get-all-trade-offers-by-sender-id/{senderId}")]
+        public async Task<IActionResult> GetAllTradeOffersBySenderId(Guid senderId)
+        {
+            var query = new GetAllTradeOffersBySenderIdQuery { SenderId = senderId };
+
+            var result = await _mediator.Send(query);
+
+            if (result == null)
+                return NotFound();
+
+            var foundTradeOffers = _mapper.Map<List<TradeOfferGetDto>>(result);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("get-all-trade-offers-by-recipient-id/{recipientId}")]
+        public async Task<IActionResult> GetAllTradeOffersByRecipientId(Guid recipientId)
+        {
+            var query = new GetAllTradeOffersByRecipientIdQuery { RecipientId = recipientId };
+
+            var result = await _mediator.Send(query);
+
+            if (result == null)
+                return NotFound();
+
+            var foundTradeOffers = _mapper.Map<List<TradeOfferGetDto>>(result);
+            return Ok(result);
+        }
     }
 }
