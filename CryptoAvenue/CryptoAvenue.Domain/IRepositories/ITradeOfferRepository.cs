@@ -12,6 +12,6 @@ namespace CryptoAvenue.Domain.IRepositories
     {
         TradeOffer GetTradeOfferBy(Expression<Func<TradeOffer, bool>> predicate);
         TradeOffer GetTradeOfferById(Guid id);
-        IEnumerable<TradeOffer> GetAllTradeOffersBy(Expression<Func<TradeOffer, bool>> predicate);
+        IEnumerable<TradeOffer> GetAllTradeOffersBy(Expression<Func<TradeOffer, bool>>? predicate = null);
     }
 }
