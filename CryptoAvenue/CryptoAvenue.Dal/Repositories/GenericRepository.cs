@@ -56,7 +56,7 @@ namespace CryptoAvenue.Dal.Repositories
 
         public void SaveChanges()
         {
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public void Update(TEntity entity)

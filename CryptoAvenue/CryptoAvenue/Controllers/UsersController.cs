@@ -75,5 +75,107 @@ namespace CryptoAvenue.Controllers
 
             return Ok(foundUsers);
         }
+
+        [HttpPatch]
+        [Route("update-user-username/{id}")]
+        public async Task<IActionResult> UpdateUserUsername(Guid id, [FromBody] string newUsername)
+        {
+            var command = new UpdateUserUsernameCommand
+            {
+                UserId = id,
+                NewUsername = newUsername
+            };
+
+            var user = await _mediator.Send(command);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
+        }
+
+        [HttpPatch]
+        [Route("update-user-email/{id}")]
+        public async Task<IActionResult> UpdateUserEmail(Guid id, [FromBody] string newEmail)
+        {
+            var command = new UpdateUserEmailCommand
+            {
+                UserId = id,
+                NewEmail = newEmail
+            };
+
+            var user = await _mediator.Send(command);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
+        }
+
+        [HttpPatch]
+        [Route("update-user-password/{id}")]
+        public async Task<IActionResult> UpdateUserPassword(Guid id, [FromBody] string newPassword)
+        {
+            var command = new UpdateUserPasswordCommand
+            {
+                UserId = id,
+                NewPassword = newPassword
+            };
+
+            var user = await _mediator.Send(command);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
+        }
+
+        [HttpPatch]
+        [Route("update-user-qna/{id}/{newSecurityQuestion}")]
+        public async Task<IActionResult> UpdateUserQna(Guid id, string newSecurityQuestion, [FromBody] string newSecurityAnswer)
+        {
+            var command = new UpdateUserQnaCommand
+            {
+                UserId = id,
+                NewSecurityQuestion = newSecurityQuestion,
+                NewSecurityAnswer = newSecurityAnswer
+            };
+
+            var result = await _mediator.Send(command);
+
+            if (result == null)
+                return NotFound();
+
+            return NoContent();
+        }
+
+        [HttpPatch]
+        [Route("update-user-profile-type/{id}")]
+        public async Task<IActionResult> UpdateUserProfileType(Guid id)
+        {
+            var command = new UpdateUserProfileTypeCommand { UserId = id };
+
+            var result = await _mediator.Send(command);
+
+            if (result == null)
+                return NotFound();
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("delete-user/{id}")]
+        public async Task<IActionResult> DeleteUser(Guid id)
+        {
+            var command = new DeleteUserCommand { UserId = id };
+
+            var result = await _mediator.Send(command);
+
+            if (result == null)
+                return NotFound();
+
+            var deletedUser = _mapper.Map<UserGetDto>(result);
+            return Ok(deletedUser);
+        }
     }
 }

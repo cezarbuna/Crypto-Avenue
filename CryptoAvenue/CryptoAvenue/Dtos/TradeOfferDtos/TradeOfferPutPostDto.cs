@@ -13,7 +13,7 @@ namespace CryptoAvenue.Dtos.TradeOfferDtos
         [Required]
         public Guid ReceivedCoinId { get; set; }
         [Required]
-        public double SentCoinAmount { get; set; }
+        public double ReceivedCoinAmount { get; set; }
         
         //public double ReceivedCoinAmount { get; set; }
     }

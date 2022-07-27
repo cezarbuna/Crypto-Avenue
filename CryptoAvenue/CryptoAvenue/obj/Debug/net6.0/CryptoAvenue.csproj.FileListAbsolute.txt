@@ -70,3 +70,7 @@ C:\Users\win 10\Desktop\Crypto-Avenue\CryptoAvenue\CryptoAvenue\bin\Debug\net6.0
 C:\Users\win 10\Desktop\Crypto-Avenue\CryptoAvenue\CryptoAvenue\bin\Debug\net6.0\CryptoAvenue.Domain.pdb
 C:\Users\win 10\Desktop\Crypto-Avenue\CryptoAvenue\CryptoAvenue\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\win 10\Desktop\Crypto-Avenue\CryptoAvenue\CryptoAvenue\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\win 10\Desktop\Crypto-Avenue\CryptoAvenue\CryptoAvenue\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\win 10\Desktop\Crypto-Avenue\CryptoAvenue\CryptoAvenue\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\win 10\Desktop\Crypto-Avenue\CryptoAvenue\CryptoAvenue\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\win 10\Desktop\Crypto-Avenue\CryptoAvenue\CryptoAvenue\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

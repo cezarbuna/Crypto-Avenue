@@ -16,11 +16,19 @@ namespace CryptoAvenue.Dal.Repositories
         {
         }
 
-        public IEnumerable<Wallet> GetAllWalletsBy(Expression<Func<Wallet, bool>> predicate)
+        public IEnumerable<Wallet> GetAllWalletsBy(Expression<Func<Wallet, bool>>? predicate = null)
         {
-            return context.Wallets.Where(predicate)
+            if (predicate == null)
+                return context.Wallets
+                    .Include(x => x.Coin)
+                    .Include(x => x.User)
+                    .ToList();
+            else
+            {
+                return context.Wallets.Where(predicate)
                 .Include(x => x.User)
                 .Include(x => x.Coin);
+            }
         }
 
         public Wallet GetWalletBy(Expression<Func<Wallet, bool>> predicate)

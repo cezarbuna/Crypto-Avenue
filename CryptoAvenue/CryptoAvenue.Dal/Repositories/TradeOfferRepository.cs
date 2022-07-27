@@ -16,8 +16,15 @@ namespace CryptoAvenue.Dal.Repositories
         {
         }
 
-        public IEnumerable<TradeOffer> GetAllTradeOffersBy(Expression<Func<TradeOffer, bool>> predicate)
+        public IEnumerable<TradeOffer> GetAllTradeOffersBy(Expression<Func<TradeOffer, bool>>? predicate = null)
         {
+            if(predicate == null)
+                return context.TradeOffers
+                .Include(x => x.SentCoin)
+                .Include(x => x.ReceivedCoin)
+                .Include(x => x.Sender)
+                .Include(x => x.Recipient);
+
             return context.TradeOffers.Where(predicate)
                 .Include(x => x.SentCoin)
                 .Include(x => x.ReceivedCoin)
