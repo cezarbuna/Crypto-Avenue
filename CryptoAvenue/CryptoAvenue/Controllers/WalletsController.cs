@@ -154,5 +154,15 @@ namespace CryptoAvenue.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("get-portfolio-percentage/{userId}")]
+        public async Task<IActionResult> GetPortfolioPercentage(Guid userId)
+        {
+            var query = new GetPortfolioPercentageQuery { UserId = userId };
+
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }

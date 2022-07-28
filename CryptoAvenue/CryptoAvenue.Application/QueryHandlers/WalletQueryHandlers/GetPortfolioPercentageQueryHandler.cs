@@ -22,29 +22,30 @@ namespace CryptoAvenue.Application.QueryHandlers.WalletQueryHandlers
         public async Task<Dictionary<double, Coin>> Handle(GetPortfolioPercentageQuery request, CancellationToken cancellationToken)
         {
             var wallets = walletRepository.GetAllWalletsBy(x => x.UserId == request.UserId);
-            /*var amounts = new List<double>();
-            var result = new Dictionary<double, Coin>();
+            var amountsInEur = new List<double>();
+            double sumInEur = 0;
 
             foreach (var wallet in wallets)
             {
-                amounts.Add(wallet.CoinAmount);
-                result.Add(0, wallet.Coin);
+                amountsInEur.Add(wallet.CoinAmount * wallet.Coin.ValueInEUR);
+                sumInEur += wallet.CoinAmount * wallet.Coin.ValueInEUR;
             }
 
-            double sum = amounts.Sum();
             var percentages = new List<double>();
 
-            foreach (var amount in amounts)
+            foreach (var amount in amountsInEur)
             {
-                percentages.Add((amount / sum) * 100);
+                percentages.Add(Math.Round((amount / sumInEur) * 100, 3));
             }
+
+            var result = new Dictionary<double, Coin>();
 
             for(int i = 0; i < percentages.Count; i++)
             {
-                result[percentages.ElementAt(i)] = percentages[i]
-            }*/
+                result.Add(percentages.ElementAt(i), wallets.ElementAt(i).Coin);
+            }
 
-            throw new NotImplementedException("asd");
+            return await Task.FromResult(result);
         }
     }
 }
