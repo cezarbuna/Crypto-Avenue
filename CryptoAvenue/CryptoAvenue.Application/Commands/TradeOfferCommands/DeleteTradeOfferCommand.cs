@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CryptoAvenue.Application.Commands.TradeOfferCommands
 {
-    public class ApplyTradeOfferCommand : IRequest
+    public class DeleteTradeOfferCommand : IRequest<TradeOffer>
     {
         public Guid TradeOfferId { get; set; }
     }
