@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CryptoAvenue.Application.CommandHandlers.WalletCommandHandlers
 {
-    public class ConvertCoinsInUserWalletsCommandHandler : IRequestHandler<ConvertCoinsInUserWalletsCommand>
+    public class ConvertCoinsInUserWalletsCommandHandler : IRequestHandler<ConvertCoinsInUserWalletsCommand, Wallet>
     {
         private readonly IWalletRepository walletRepository;
         private readonly ICoinRepository coinRepository;
@@ -26,25 +26,39 @@ namespace CryptoAvenue.Application.CommandHandlers.WalletCommandHandlers
             this.userRepository = userRepository;
         }
 
-        public async Task<Unit> Handle(ConvertCoinsInUserWalletsCommand request, CancellationToken cancellationToken)
+        public async Task<Wallet> Handle(ConvertCoinsInUserWalletsCommand request, CancellationToken cancellationToken)
         {
-            if (!walletRepository.Any(x => x.UserId == request.UserId && x.CoinId == request.SoldCoinId))
-                throw new ArgumentException("The user does not own any sold coin");
-
-            var soldCoinWallet = walletRepository.GetWalletBy(x => x.UserId == request.UserId && x.CoinId == request.SoldCoinId);
-
+            var soldCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == request.SoldCoinId && x.UserId == request.UserId);
             var soldCoin = coinRepository.GetCoinById(request.SoldCoinId);
             var boughtCoin = coinRepository.GetCoinById(request.BoughtCoinId);
 
             var soldAmount = (request.BoughtAmount * boughtCoin.ValueInEUR) / soldCoin.ValueInEUR;
 
-            //var boughtCoinWallet = walletRepository.GetWalletBy(x => x.UserId == request.UserId && x.CoinId == request.SoldCoinId);
+            soldCoinWallet.CoinAmount -= soldAmount;
+            
+            if(walletRepository.Any(x => x.CoinId == request.BoughtCoinId))
+            {
+                var boughtCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == request.BoughtCoinId);
+                boughtCoinWallet.CoinAmount += request.BoughtAmount;
+                walletRepository.Update(boughtCoinWallet);
+                walletRepository.SaveChanges();
 
-            if (soldCoinWallet.CoinAmount < soldAmount)
-                throw new Exception("Amount necessary for trade excedes available amount in the wallet.");
+                return await Task.FromResult(boughtCoinWallet);
+            }
+            else
+            {
+                var boughtCoinWallet = new Wallet
+                {
+                    CoinId = request.BoughtCoinId,
+                    UserId = request.UserId,
+                    CoinAmount = request.BoughtAmount
+                };
 
+                walletRepository.Insert(boughtCoinWallet);
+                walletRepository.SaveChanges();
 
-            return await Task.FromResult(Unit.Value);
+                return await Task.FromResult(boughtCoinWallet);
+            }
         }
     }
 }
