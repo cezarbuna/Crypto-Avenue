@@ -103,5 +103,35 @@ namespace CryptoAvenue.Controllers
             var foundTradeOffers = _mapper.Map<List<TradeOfferGetDto>>(result);
             return Ok(result);
         }
+
+        [HttpDelete]
+        [Route("apply-trade-offer/{id}")]
+        public async Task<IActionResult> ApplyTradeOffer(Guid id)
+        {
+            var command = new ApplyTradeOfferCommand { TradeOfferId = id };
+
+            var result = await _mediator.Send(command);
+
+            if (result == null)
+                return NotFound();
+
+            var appliedOffer = _mapper.Map<TradeOfferGetDto>(result);
+            return Ok(appliedOffer);
+        }
+
+        [HttpDelete]
+        [Route("delete-trade-offer/{id}")]
+        public async Task<IActionResult> DeleteTradeOffer(Guid id)
+        {
+            var command = new DeleteTradeOfferCommand { TradeOfferId = id };
+
+            var result = await _mediator.Send(command);
+
+            if (result == null)
+                return NotFound();
+
+            var deletedTradeOffer = _mapper.Map<TradeOfferGetDto>(result);
+            return Ok(result);
+        }
     }
 }

@@ -26,22 +26,68 @@ namespace CryptoAvenue.Application.CommandHandlers.TradeOfferCommandHandlers
             var tradeOffer = tradeOfferRepository.GetTradeOfferById(request.TradeOfferId);
 
             var senderSentCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == tradeOffer.SentCoinId && x.UserId == tradeOffer.SenderId);
-            var senderReceivedCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == tradeOffer.ReceivedCoinId && x.UserId == tradeOffer.SenderId);
-            var recipientSentCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == tradeOffer.SentCoinId && x.UserId == tradeOffer.RecipientId);
             var recipientReceivedCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == tradeOffer.ReceivedCoinId && x.UserId == tradeOffer.RecipientId);
 
             senderSentCoinWallet.CoinAmount -= tradeOffer.SentCoinAmount;
-            if(senderSentCoinWallet.CoinAmount <= 0) 
-                walletRepository.Delete(senderSentCoinWallet);
             walletRepository.Update(senderSentCoinWallet);
+            recipientReceivedCoinWallet.CoinAmount -= tradeOffer.ReceivedCoinAmount;
+            walletRepository.Update(recipientReceivedCoinWallet);
 
-            recipientReceivedCoinWallet.CoinAmount += tradeOffer.ReceivedCoinAmount;
-            walletRepository.Update(senderSentCoinWallet);
+            var senderReceivedCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == tradeOffer.ReceivedCoinId && x.UserId == tradeOffer.SenderId);
+            var recipientSentCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == tradeOffer.SentCoinId && x.UserId == tradeOffer.RecipientId);
 
-            if(senderReceivedCoinWallet != null && recipientReceivedCoinWallet != null)
+            if(senderReceivedCoinWallet != null && recipientSentCoinWallet != null)
             {
-                senderReceivedCoinWallet.CoinAmount += tradeOffer.SentCoinAmount;
+                senderReceivedCoinWallet.CoinAmount += tradeOffer.ReceivedCoinAmount;
+                walletRepository.Update(senderReceivedCoinWallet);
+                recipientSentCoinWallet.CoinAmount += tradeOffer.SentCoinAmount;
+                walletRepository.Update(recipientSentCoinWallet);
             }
+            else if(senderReceivedCoinWallet == null && recipientSentCoinWallet != null)
+            {
+                walletRepository.Insert(new Wallet
+                {
+                    CoinId = tradeOffer.ReceivedCoinId,
+                    UserId = tradeOffer.SenderId,
+                    CoinAmount = tradeOffer.ReceivedCoinAmount
+                });
+
+                recipientSentCoinWallet.CoinAmount += tradeOffer.SentCoinAmount;
+                walletRepository.Update(recipientSentCoinWallet);
+            }
+            else if(senderReceivedCoinWallet != null && recipientSentCoinWallet == null)
+            {
+                senderReceivedCoinWallet.CoinAmount += tradeOffer.ReceivedCoinAmount;
+                walletRepository.Update(senderReceivedCoinWallet);
+
+                walletRepository.Insert(new Wallet
+                {
+                    CoinId = tradeOffer.SentCoinId,
+                    UserId = tradeOffer.RecipientId,
+                    CoinAmount = tradeOffer.SentCoinAmount
+                });
+            }
+            else
+            {
+                walletRepository.Insert(new Wallet
+                {
+                    CoinId = tradeOffer.ReceivedCoinId,
+                    UserId = tradeOffer.SenderId,
+                    CoinAmount = tradeOffer.ReceivedCoinAmount
+                });
+
+                walletRepository.Insert(new Wallet
+                {
+                    CoinId = tradeOffer.SentCoinId,
+                    UserId = tradeOffer.RecipientId,
+                    CoinAmount = tradeOffer.SentCoinAmount
+                });
+            }
+
+            walletRepository.SaveChanges();
+
+            tradeOfferRepository.Delete(tradeOffer);
+            tradeOfferRepository.SaveChanges();
 
             return await Task.FromResult(tradeOffer);
         }
