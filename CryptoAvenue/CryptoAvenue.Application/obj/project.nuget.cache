@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4uKEf/x6b8nV4avpQJx3gXDe28iVJc0vmsRtC7+R7cgdiFBFakGxNJ161iwew1QcThn5LDPANMrAcaNyvkIOFQ==",
+  "dgSpecHash": "DM4uXAe+vxWg6L8B6xCCVVeOFz779F1pOjOgo2bxwgGcOUF86rsTiNJHQH7NBSJqUIrhfiJl+BA0Bba1PQRKhg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.Application\\CryptoAvenue.Application.csproj",
+  "projectFilePath": "C:\\Users\\win 10\\OneDrive\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.Application\\CryptoAvenue.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\win 10\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
     "C:\\Users\\win 10\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
