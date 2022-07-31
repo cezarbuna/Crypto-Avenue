@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj": {}
+    "C:\\Users\\win 10\\OneDrive\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj": {
+    "C:\\Users\\win 10\\OneDrive\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\win 10\\OneDrive\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj",
         "projectName": "CryptoAvenue.UnitTests",
-        "projectPath": "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj",
+        "projectPath": "C:\\Users\\win 10\\OneDrive\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj",
         "packagesPath": "C:\\Users\\win 10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\obj\\",
+        "outputPath": "C:\\Users\\win 10\\OneDrive\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

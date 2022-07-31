@@ -94,6 +94,23 @@ namespace CryptoAvenue.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("copy-user-portfolio/{copiedId}/{pastedId}/{option}")]
+        public async Task<IActionResult> CopyUserPortfolio(Guid copiedId, Guid pastedId, int option, [FromBody] int copiedAmount)
+        {
+            var command = new CopyUserPortfolioCommand
+            {
+                CopiedUserId = copiedId,
+                PastedUserId = pastedId,
+                Option = option,
+                Amount = copiedAmount
+            };
+
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
         [HttpGet]
         [Route("get-all-wallets")]
         public async Task<IActionResult> GetAllWallets()
