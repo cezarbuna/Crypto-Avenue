@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jUq0NtfxLoFEYYJPfDsBSat+b3vjAeicQzGY9ykxKveQeroAj/18FIOqqywCARdei1QRCH0H9xM4EM62muSKmA==",
+  "dgSpecHash": "8YPo0t/bGRoxQbQ0pTjTwxXY/3yuG9Dztv33quQqXYK8i+/hjsxZMp0K/IOYu0DGIVHQX/qbpup6oI0R3bpWOA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj",
+  "projectFilePath": "C:\\Users\\win 10\\OneDrive\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue.UnitTests\\CryptoAvenue.UnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\win 10\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\win 10\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

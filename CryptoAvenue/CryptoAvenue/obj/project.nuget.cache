@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ApR7M/dHOwUbBxAb9Sf1m3dj60h2UPdD3hH6Ui2tZwwjQN9g5ZYdg22RHsu6/Vy9cKCzFcmAuqxovOA1BWQMwQ==",
+  "dgSpecHash": "srgdgX3+ZiTUAH4Bl00Q1llfQ/p/AmppJue9Bz/cOLEW6Kp8V6t236udhpLbaONWJHv+TJlySmJ9zxvWovoHdg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\win 10\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue\\CryptoAvenue.csproj",
+  "projectFilePath": "C:\\Users\\win 10\\OneDrive\\Desktop\\Crypto-Avenue\\CryptoAvenue\\CryptoAvenue\\CryptoAvenue.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\win 10\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\win 10\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
