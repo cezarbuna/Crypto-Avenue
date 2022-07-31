@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptoAvenue.Application.Commands.TradeOfferCommands
+namespace CryptoAvenue.Application.Commands.WalletCommands
 {
-    public class ApplyTradeOfferCommand : IRequest
+    public class DeleteWalletCommand : IRequest<Wallet>
     {
-        public Guid TradeOfferId { get; set; }
+        public Guid WalletId { get; set; }
     }
 }

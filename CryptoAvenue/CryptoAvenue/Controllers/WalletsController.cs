@@ -181,5 +181,20 @@ namespace CryptoAvenue.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+        [HttpDelete]
+        [Route("delete-wallet/{id}")]
+        public async Task<IActionResult> DeleteWallet(Guid id)
+        {
+            var command = new DeleteWalletCommand { WalletId = id };
+
+            var result = await _mediator.Send(command);
+
+            if (result == null)
+                return NotFound();
+
+            var deletedWallet = _mapper.Map<WalletGetDto>(result);
+            return Ok(deletedWallet);
+        }
     }
 }

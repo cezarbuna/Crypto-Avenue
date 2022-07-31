@@ -43,6 +43,17 @@ namespace CryptoAvenue.Controllers
             return CreatedAtAction(nameof(GetTradeOfferById), new { Id = tradeOffer.Id }, addedTradeOffer);
         }
 
+        [HttpPost]
+        [Route("apply-trade-offer")]
+        public async Task<IActionResult> ApplyTradeOffer([FromBody] Guid id)
+        {
+            var command = new ApplyTradeOfferCommand { TradeOfferId = id };
+
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
         [HttpGet]
         [Route("get-all-trade-offers")]
         public async Task<IActionResult> GetAllTradeOffers()
@@ -102,21 +113,6 @@ namespace CryptoAvenue.Controllers
 
             var foundTradeOffers = _mapper.Map<List<TradeOfferGetDto>>(result);
             return Ok(result);
-        }
-
-        [HttpDelete]
-        [Route("apply-trade-offer/{id}")]
-        public async Task<IActionResult> ApplyTradeOffer(Guid id)
-        {
-            var command = new ApplyTradeOfferCommand { TradeOfferId = id };
-
-            var result = await _mediator.Send(command);
-
-            if (result == null)
-                return NotFound();
-
-            var appliedOffer = _mapper.Map<TradeOfferGetDto>(result);
-            return Ok(appliedOffer);
         }
 
         [HttpDelete]
