@@ -85,6 +85,14 @@ namespace CryptoAvenue.Application.CommandHandlers.WalletCommandHandlers
                 }
             }
 
+            chosenCurrencyWallet.CoinAmount -= request.Amount;
+            walletRepository.Update(chosenCurrencyWallet);
+
+            if(chosenCurrencyWallet.CoinAmount <= 0)
+            {
+                walletRepository.Delete(chosenCurrencyWallet);
+            }
+
             walletRepository.SaveChanges();
 
             return await Task.FromResult(Unit.Value);
