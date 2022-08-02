@@ -43,9 +43,9 @@ namespace CryptoAvenue.Controllers
             return CreatedAtAction(nameof(GetTradeOfferById), new { Id = tradeOffer.Id }, addedTradeOffer);
         }
 
-        [HttpPost]
-        [Route("apply-trade-offer")]
-        public async Task<IActionResult> ApplyTradeOffer([FromBody] Guid id)
+        [HttpPatch]
+        [Route("apply-trade-offer/{id}")]
+        public async Task<IActionResult> ApplyTradeOffer(Guid id)
         {
             var command = new ApplyTradeOfferCommand { TradeOfferId = id };
 

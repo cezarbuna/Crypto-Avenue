@@ -38,7 +38,7 @@ namespace CryptoAvenue.Application.CommandHandlers.WalletCommandHandlers
             
             if(walletRepository.Any(x => x.CoinId == request.BoughtCoinId))
             {
-                var boughtCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == request.BoughtCoinId);
+                var boughtCoinWallet = walletRepository.GetWalletBy(x => x.CoinId == request.BoughtCoinId && x.UserId == request.UserId);
                 boughtCoinWallet.CoinAmount += request.BoughtAmount;
                 walletRepository.Update(boughtCoinWallet);
                 walletRepository.SaveChanges();
